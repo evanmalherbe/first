@@ -1,0 +1,100 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.logoImg {
+  height: 3rem;
+  pointer-events: none;
+
+  margin-left: 1rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+
+  background-color: white;
+  color: black;
+}
+
+.header h1 {
+  margin: 0rem 0rem 0rem 1rem;
+
+}
+
+.redPara {
+  color: red;
+}
+
+.displayCarsDiv {
+  display: flex;
+  flex-direction: column;
+  
+  padding: 1rem;
+
+  border: 1px solid #dedede;
+  width: 40rem;
+}
+
+.formsRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.formsCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 0.5rem;
+}
+
+.listCarsFormDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 1rem;
+  width: 20rem;
+
+  border: 1px solid  #dedede;
+}
+
+.saveCarFormDiv {
+  display: flex;
+  flex-direction: column;
+
+  padding: 1rem;
+  width: 20rem;
+
+  border: 1px solid #dedede;
+}
+
+.deleteCarFormDiv {
+  display: flex;
+  flex-direction: column;
+
+  padding: 1rem;
+  width: 20rem;
+
+  border: 1px solid #dedede;
+}
+
+.updateCarFormDiv {
+  display: flex;
+  flex-direction: column;
+
+  padding: 1rem;
+  width: 20rem;
+
+  border: 1px solid #dedede;
+}
