@@ -1,9 +1,12 @@
 // Import custom stylesheet
 import "../App.css";
 
-// Function to display search results on page
+// Function to display contents of database (list of cars) on page
 function DisplayCars(props) {
   let data = props.carList;
+
+  let array = data;
+  console.log("Array length is: " + array.length);
 
   return (
     <div className="displayCarsDiv">

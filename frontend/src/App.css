@@ -6,7 +6,7 @@ body {
 .app {
   display: flex;
   flex-direction: column;
-
+  background-color: #d8ecf3;
 }
 
 /* Logo  and header styles */
@@ -20,12 +20,14 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 1rem;
-  background-color: white;
-  color: black;
+  padding: 0.5rem;
+  border-bottom: 1px solid #808080;
+  background-color: #1a8cff;
+  color: #F0FFFF;
 }
 
 .header h1 {
+  font-size: 2rem;
   margin: 0rem 0rem 0rem 1rem;
 }
 
@@ -44,6 +46,7 @@ Red paragraph */
 .formsCol {
   display: flex;
   flex-direction: column;
+  width: 30rem;
 }
 
 /* Style to space inputs in a form neatly */
@@ -51,34 +54,15 @@ Red paragraph */
   margin-bottom: 0.5rem;
 }
 
-/* Div for displaying list of cars from database  */
-.displayCarsDiv {
-  display: flex;
-  flex-direction: column; 
-  padding: 1rem;
-  width: 40rem;
-  border: 1px solid #dedede;
-  
-}
-
-/* Div for buttons to list older cars or all cars  */
- .listCarsFormDiv {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 1rem;
-  width: 20rem;
-  border: 1px solid  #dedede;
-} 
-
 /* Div for form to add car to database  */
 .addCarFormDiv {
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  margin-bottom: 1rem;
-  width: 15rem;
-  border: 1px solid #dedede;
+  margin: 0.5rem;
+  flex: 1;
+  border: 1px solid #808080;
+  background-color: white;
 }
 
 /* Div for form to update existing car in database  */
@@ -86,9 +70,10 @@ Red paragraph */
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  margin-bottom: 1rem;
-  width: 15rem;
-  border: 1px solid #dedede;
+  margin: 0.5rem;
+  flex: 1;
+  border: 1px solid #808080;
+  background-color: white;
 }
 
 /* Div for form to update many cars in database  */
@@ -96,17 +81,42 @@ Red paragraph */
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  margin-bottom: 1rem;
-  width: 15rem;
-  border: 1px solid #dedede;
+  margin: 0.5rem;
+  flex: 1;
+  border: 1px solid #808080;
+  background-color: white;
 }
+
+/* Div for buttons to list older cars or all cars  */
+.listCarsButtonsDiv {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  flex: 1;
+  margin: 0.5rem;
+  border: 1px solid  #808080;
+  background-color: white;
+} 
 
 /* Div for form to delete car from database  */
 .deleteCarFormDiv {
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  width: 20rem;
-  border: 1px solid #dedede;
+  flex: 1;
+  margin: 0.5rem;
+  border: 1px solid #808080;
+  background-color: white;
+}
+
+/* Div for displaying list of cars from database  */
+.displayCarsDiv {
+  display: flex;
+  flex-direction: column; 
+  padding: 1rem;
+  flex: 1;
+  margin: 0.5rem;
+  border: 1px solid #808080;
+  background-color: white;
 }
 

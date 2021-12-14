@@ -455,9 +455,16 @@ class App extends React.Component {
                   handleOwnerToDelete={this.handleOwnerToDelete}
                 />
               </div>
+
               <DisplayCars carList={cars} />
+
+              {/* End of "formsCol" div */}
             </div>
+
+            {/* End of "formsRow" div */}
           </div>
+
+          {/* End of "app" div */}
         </div>
       );
     }

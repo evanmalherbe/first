@@ -12,7 +12,7 @@ import "../App.css";
 // Function to display buttons to list all cars or only cars older than 5 years
 function ListCarsForm(props) {
   return (
-    <div className="listCarsFormDiv">
+    <div className="listCarsButtonsDiv">
       <h2>List</h2>
       <p>
         Click button to list model, make, registration and current owner for all
