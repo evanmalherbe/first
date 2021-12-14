@@ -1,5 +1,7 @@
+// Import mongoose
 const mongoose = require("mongoose");
 
+// Create schema for database entries (each document in db represents a car)
 let CarsSchema = mongoose.Schema({
   year: {
     type: Number,
@@ -28,7 +30,4 @@ let CarsSchema = mongoose.Schema({
 });
 
 // module.exports makes the model available outside of your module
-// The first argument for mongoose.model should be the name of the
-// document in your MongoDB collection (remember that spelling
-// is important, this includes casing),
 module.exports = mongoose.model("cars", CarsSchema);

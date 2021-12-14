@@ -7,6 +7,7 @@ import ListCarsForm from "./Components/ListCarsForm";
 import AddCarForm from "./Components/AddCarForm";
 import DeleteCarForm from "./Components/DeleteCarForm";
 import UpdateCarForm from "./Components/UpdateCarForm";
+import UpdateManyForm from "./Components/UpdateManyForm";
 
 // Import Bootstrap styles
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -41,12 +42,16 @@ class App extends React.Component {
       ownerName: "",
     };
 
-    // Binding to make "this" work
+    // Binding for functions to make "this" work
     this.handleListAllCars = this.handleListAllCars.bind(this);
     this.handleListOlderCars = this.handleListOlderCars.bind(this);
     this.handleAddCar = this.handleAddCar.bind(this);
     this.handleDeleteCar = this.handleDeleteCar.bind(this);
     this.handleUpdateCar = this.handleUpdateCar.bind(this);
+    this.handleUpdateMany = this.handleUpdateMany.bind(this);
+
+    this.handleUpdateManyColour = this.handleUpdateManyColour.bind(this);
+    this.handleUpdateManyOwnerName = this.handleUpdateManyOwnerName.bind(this);
 
     this.handleChangeYear = this.handleChangeYear.bind(this);
     this.handleChangeMake = this.handleChangeMake.bind(this);
@@ -67,10 +72,68 @@ class App extends React.Component {
     this.reloadResults = this.reloadResults.bind(this);
   }
 
+  // Functions for updating many cars
+  handleUpdateManyColour(event) {
+    this.setState(
+      {
+        colour: event.target.value,
+      },
+      () => console.log("Colour to update: " + this.state.colour)
+    );
+  }
+
+  handleUpdateManyOwnerName(event) {
+    this.setState(
+      {
+        ownerName: event.target.value,
+      },
+      () => console.log("Name of owner: " + this.state.ownerName)
+    );
+  }
+
+  handleUpdateMany(event) {
+    fetch("/updateMany", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // Send new url in body of request
+      body: JSON.stringify({
+        colour: this.state.colour,
+        ownerName: this.state.ownerName,
+      }),
+    })
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          this.setState(
+            {
+              isLoaded: false,
+            },
+            () => {
+              console.log("Update many request sent. " + result.message);
+              this.reloadResults();
+            }
+          );
+        },
+        (error) => {
+          this.setState({
+            isLoaded: false,
+            error,
+          });
+        }
+      );
+    // End of handle update many function
+  }
+
+  // ------------------------------------------------------ //
+
+  // function to handle when user clicks button to list all cars
   handleListAllCars(event) {
     this.setState({ isLoaded: false }, () => this.reloadResults());
   }
 
+  // Function to handle when user clicks button to list cars older than 5 years
   handleListOlderCars(event) {
     fetch("/listOlder")
       .then((res) => res.json())
@@ -132,13 +195,13 @@ class App extends React.Component {
     });
   }
 
+  // Function to update a specific car's details
   handleUpdateCar(event) {
     fetch("/update", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      // Send new url in body of request
       body: JSON.stringify({
         year: this.state.year,
         make: this.state.make,
@@ -170,10 +233,9 @@ class App extends React.Component {
       );
     // End of handle update car function
   }
-
   // End of functions for "Update car" form ---------------------------------------- //
 
-  // Functions to handle saving new car details to state for "Add car" form
+  // Functions for "Add car" form
   handleChangeYear(event) {
     this.setState({
       year: Number(event.target.value),
@@ -210,9 +272,8 @@ class App extends React.Component {
     });
   }
 
+  // function to add car after user has filled in add car form
   handleAddCar(event) {
-    console.log("Submitted form");
-
     fetch("/add", {
       method: "POST",
       headers: {
@@ -234,10 +295,9 @@ class App extends React.Component {
           this.setState(
             {
               isLoaded: false,
-              //cars: result.message,
             },
             () => {
-              console.log("Post request sent. " + result.message);
+              console.log("Post request to add car sent. " + result.message);
               this.reloadResults();
             }
           );
@@ -252,6 +312,7 @@ class App extends React.Component {
     // End of handleaddcar function
   }
 
+  // Reload results/list of cars
   reloadResults() {
     if (this.state.isLoaded === false) {
       console.log("Reload results has run.");
@@ -277,6 +338,7 @@ class App extends React.Component {
     }
   }
 
+  // Function to add name of owner to state for delete form
   handleOwnerToDelete(event) {
     this.setState(
       {
@@ -286,6 +348,7 @@ class App extends React.Component {
     );
   }
 
+  // Function to use post request to delete car belonging to specific owner
   handleDeleteCar(event) {
     fetch("/delete", {
       method: "POST",
@@ -317,9 +380,10 @@ class App extends React.Component {
           });
         }
       );
-    // End of handleaddcar function
+    // End of handle delete car function
   }
 
+  // Function to load list of cars in database when page first loads
   componentDidMount() {
     if (this.state.isLoaded === false) {
       fetch("/carList")
@@ -363,27 +427,36 @@ class App extends React.Component {
               handleChangeOwnerName={this.handleChangeOwnerName}
               handleAddCar={this.handleAddCar}
             />
-            <div className="formsCol">
-              <ListCarsForm
-                handleListAllCars={this.handleListAllCars}
-                handleListOlderCars={this.handleListOlderCars}
-              />
-              <DeleteCarForm
-                handleDeleteCar={this.handleDeleteCar}
-                handleOwnerToDelete={this.handleOwnerToDelete}
-              />
-              <UpdateCarForm
-                handleUpdateYear={this.handleUpdateYear}
-                handleUpdateMake={this.handleUpdateMake}
-                handleUpdateModel={this.handleUpdateModel}
-                handleUpdateColour={this.handleUpdateColour}
-                handleUpdateRegNum={this.handleUpdateRegNum}
-                handleUpdateOwnerName={this.handleUpdateOwnerName}
-                handleUpdateCar={this.handleUpdateCar}
-              />
-            </div>
 
-            <DisplayCars carList={cars} />
+            <UpdateCarForm
+              handleUpdateYear={this.handleUpdateYear}
+              handleUpdateMake={this.handleUpdateMake}
+              handleUpdateModel={this.handleUpdateModel}
+              handleUpdateColour={this.handleUpdateColour}
+              handleUpdateRegNum={this.handleUpdateRegNum}
+              handleUpdateOwnerName={this.handleUpdateOwnerName}
+              handleUpdateCar={this.handleUpdateCar}
+            />
+
+            <UpdateManyForm
+              handleUpdateMany={this.handleUpdateMany}
+              handleUpdateManyOwnerName={this.handleUpdateManyOwnerName}
+              handleUpdateManyColour={this.handleUpdateManyColour}
+            />
+
+            <div className="formsCol">
+              <div className="formsRow">
+                <ListCarsForm
+                  handleListAllCars={this.handleListAllCars}
+                  handleListOlderCars={this.handleListOlderCars}
+                />
+                <DeleteCarForm
+                  handleDeleteCar={this.handleDeleteCar}
+                  handleOwnerToDelete={this.handleOwnerToDelete}
+                />
+              </div>
+              <DisplayCars carList={cars} />
+            </div>
           </div>
         </div>
       );
@@ -391,4 +464,5 @@ class App extends React.Component {
   }
 }
 
+// Export App to be imported by other files
 export default App;

@@ -9,11 +9,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // Import custom stylesheet
 import "../App.css";
 
-// Create function to display HTTP Post form in header
+// Function to display buttons to list all cars or only cars older than 5 years
 function ListCarsForm(props) {
   return (
-    //model, make, registration number and current owner for all cars
-    // older than 5 years.
     <div className="listCarsFormDiv">
       <h2>List</h2>
       <p>

@@ -1,10 +1,11 @@
 /* In this file, you will create all the code needed to perform CRUD operations using Mongoose. */
+
+// Import car model file
 const Car = require("../models/cars.model.js");
-//const mongoose = require("mongoose");
 
 // Add new car to collection
 exports.create = function (req, res) {
-  // Create new car - substitute values here with variables later
+  // Get form info from req.body and add to new Car model
   let carModel = new Car({
     year: req.body.year,
     make: req.body.make,
@@ -28,7 +29,7 @@ exports.create = function (req, res) {
   });
 };
 
-// Find all cars in collection and display
+// Find all cars in collection and display (do not display id and __v )
 exports.findAll = function (req, res) {
   Car.find({}, "-_id -__v", function (err, cars) {
     if (err) {
@@ -58,18 +59,20 @@ exports.findOlder = function (req, res) {
 
 // Update an existing car document chosen by owner name
 exports.updateByOwner = function (req, res) {
-  let query = { owner: req.body.ownerName }; // Name of owner who's car we want to update
+  // Name of owner who's car we want to update
+  let query = { owner: req.body.ownerName };
 
   // Update car with new info
   Car.findOneAndUpdate(
     query,
+    // Fields to update from form input
     {
       year: req.body.year,
       make: req.body.make,
       model: req.body.model,
       colour: req.body.colour,
       registration: req.body.regNum,
-    }, // Updated owner name or add other fields to be updated
+    },
     { new: true },
     function (err, doc) {
       if (err) {
@@ -79,6 +82,22 @@ exports.updateByOwner = function (req, res) {
       res.send({ message: "Updated!" });
     }
   );
+};
+
+// Update more than one car document. Learned to do this here:
+// https://stackoverflow.com/questions/1740023/mongodb-how-to-update-multiple-documents-with-a-single-command
+exports.updateMany = function (req, res) {
+  // Name of owner who's car we want to update
+  let query = { owner: req.body.ownerName };
+
+  // Update cars with new info
+  Car.updateMany(query, { colour: req.body.colour }, function (err, doc) {
+    if (err) {
+      console.log("Something wrong when updating data!");
+      res.send({ message: "ERROR: Not Updated. " + err });
+    }
+    res.send({ message: "Updated!" });
+  });
 };
 
 // Delete car identified by owner name

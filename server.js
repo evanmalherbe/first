@@ -1,10 +1,15 @@
 const express = require("express");
+
+// import mongoose
 const mongoose = require("mongoose");
+
+// Import body parser
 const bodyParser = require("body-parser");
 
 const path = require("path");
 const app = express();
 
+// Use bodyparser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -12,6 +17,7 @@ app.use(bodyParser.json());
 require("./routes/display.js")(app);
 require("./routes/add.js")(app);
 require("./routes/update.js")(app);
+require("./routes/updateMany.js")(app);
 require("./routes/delete.js")(app);
 require("./routes/displayOlder.js")(app);
 
@@ -39,8 +45,7 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-//HYPERION note: remember that you can get this uri for connecting
-//to your database from Atlas>Connect from your app.
+//Uri for connecting to database from MongoDB Atlas>Connect
 const uri =
   "mongodb+srv://evanmalherbe:jinnscir@cluster0.xrjxb.mongodb.net/test?retryWrites=true&w=majority";
 
@@ -51,12 +56,14 @@ mongoose.Promise = global.Promise;
  and figured out that the "useMongoClient: true" option was causing it not to connect, as it is "not supported". Removed the option and now it works. */
 mongoose.connect(uri);
 
+// Message if could not connect to db
 mongoose.connection.on("error", function () {
   console.log("Connection to Mongo established.");
   console.log("Could not connect to the database. Exiting now...");
   process.exit();
 });
 
+// Message if success in connecting to db
 mongoose.connection.once("open", function () {
   console.log("Successfully connected to the database");
 });

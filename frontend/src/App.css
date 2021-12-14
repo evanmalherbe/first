@@ -1,3 +1,4 @@
+/* HyperionDev level 3 task 7 - Stylsheet */
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -8,10 +9,10 @@ body {
 
 }
 
+/* Logo  and header styles */
 .logoImg {
   height: 3rem;
   pointer-events: none;
-
   margin-left: 1rem;
 }
 
@@ -20,20 +21,21 @@ body {
   flex-direction: row;
   align-items: center;
   padding: 1rem;
-
   background-color: white;
   color: black;
 }
 
 .header h1 {
   margin: 0rem 0rem 0rem 1rem;
-
 }
 
+/* --------------------------------------- 
+Red paragraph */
 .redPara {
   color: red;
 }
 
+/* Styling for containers where elements inside must be in a row or column - flexbox */
 .formsRow {
   display: flex;
   flex-direction: row;
@@ -44,58 +46,67 @@ body {
   flex-direction: column;
 }
 
+/* Style to space inputs in a form neatly */
 .form-group {
   margin-bottom: 0.5rem;
 }
 
+/* Div for displaying list of cars from database  */
 .displayCarsDiv {
   display: flex;
-  flex-direction: column;
-  
+  flex-direction: column; 
   padding: 1rem;
-
-  flex: 2;
+  width: 40rem;
   border: 1px solid #dedede;
   
 }
 
+/* Div for buttons to list older cars or all cars  */
  .listCarsFormDiv {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   padding: 1rem;
-  width: 21rem;
-
+  width: 20rem;
   border: 1px solid  #dedede;
 } 
 
+/* Div for form to add car to database  */
 .addCarFormDiv {
   display: flex;
   flex-direction: column;
-
   padding: 1rem;
-
-  flex: 1;
+  margin-bottom: 1rem;
+  width: 15rem;
   border: 1px solid #dedede;
 }
 
-.deleteCarFormDiv {
-  display: flex;
-  flex-direction: column;
-
-  padding: 1rem;
-  flex: 1;
-
-  border: 1px solid #dedede;
-}
-
+/* Div for form to update existing car in database  */
 .updateCarFormDiv {
   display: flex;
   flex-direction: column;
-
   padding: 1rem;
-  
-  flex: 1;
+  margin-bottom: 1rem;
+  width: 15rem;
   border: 1px solid #dedede;
 }
+
+/* Div for form to update many cars in database  */
+.updateManyFormDiv {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  width: 15rem;
+  border: 1px solid #dedede;
+}
+
+/* Div for form to delete car from database  */
+.deleteCarFormDiv {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 20rem;
+  border: 1px solid #dedede;
+}
+

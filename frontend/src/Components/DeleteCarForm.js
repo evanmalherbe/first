@@ -10,7 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // Import custom stylesheet
 import "../App.css";
 
-// Create function to display HTTP Post form in header
+// Function to display HTTP Post form to delete cars from database
 function DeleteCarForm(props) {
   return (
     <div className="deleteCarFormDiv">

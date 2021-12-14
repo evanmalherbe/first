@@ -6,7 +6,7 @@ import logo from "../monkeyLogo.png";
 // Import custom stylesheet
 import "../App.css";
 
-// Function to display header for page. Includes search form component
+// Function to display header for page
 function Header(props) {
   return (
     <header className="header">
