@@ -24,7 +24,7 @@ class App extends React.Component {
       isLoaded: false,
       cars: [
         {
-          year: "",
+          year: null,
           make: "",
           model: "",
           colour: "",
@@ -33,7 +33,7 @@ class App extends React.Component {
         },
       ],
 
-      year: "",
+      year: null,
       make: "",
       model: "",
       colour: "",
@@ -42,7 +42,8 @@ class App extends React.Component {
     };
 
     // Binding to make "this" work
-    this.handleListCars = this.handleListCars.bind(this);
+    this.handleListAllCars = this.handleListAllCars.bind(this);
+    this.handleListOlderCars = this.handleListOlderCars.bind(this);
     this.handleAddCar = this.handleAddCar.bind(this);
     this.handleDeleteCar = this.handleDeleteCar.bind(this);
     this.handleUpdateCar = this.handleUpdateCar.bind(this);
@@ -66,12 +67,38 @@ class App extends React.Component {
     this.reloadResults = this.reloadResults.bind(this);
   }
 
-  handleListCars(event) {}
+  handleListAllCars(event) {
+    this.setState({ isLoaded: false }, () => this.reloadResults());
+  }
+
+  handleListOlderCars(event) {
+    fetch("/listOlder")
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          this.setState(
+            {
+              isLoaded: true,
+              cars: result.message,
+            },
+            () => {
+              console.log("List older cars request sent. " + result.message);
+            }
+          );
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error,
+          });
+        }
+      );
+  }
 
   // Functions to handle saving car details to state for "Update cars" form
   handleUpdateYear(event) {
     this.setState({
-      year: event.target.value,
+      year: Number(event.target.value),
     });
   }
 
@@ -149,7 +176,7 @@ class App extends React.Component {
   // Functions to handle saving new car details to state for "Add car" form
   handleChangeYear(event) {
     this.setState({
-      year: event.target.value,
+      year: Number(event.target.value),
     });
   }
 
@@ -337,6 +364,10 @@ class App extends React.Component {
               handleAddCar={this.handleAddCar}
             />
             <div className="formsCol">
+              <ListCarsForm
+                handleListAllCars={this.handleListAllCars}
+                handleListOlderCars={this.handleListOlderCars}
+              />
               <DeleteCarForm
                 handleDeleteCar={this.handleDeleteCar}
                 handleOwnerToDelete={this.handleOwnerToDelete}

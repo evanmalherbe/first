@@ -17,7 +17,9 @@ function UpdateCarForm(props) {
       <h2>Update</h2>
       <Form>
         <div className="form-group">
-          <Form.Label>Enter full name of car owner (mandatory):</Form.Label>
+          <Form.Label>
+            Enter full name of car owner <b>(mandatory)</b>:
+          </Form.Label>
           <FormControl
             type="text"
             id="owner"

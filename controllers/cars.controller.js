@@ -42,6 +42,20 @@ exports.findAll = function (req, res) {
   });
 };
 
+// Find all cars older than 5 years and list model, make, registration number and current owner
+exports.findOlder = function (req, res) {
+  Car.find({ year: { $lt: 2016 } }, "-_id -__v", function (err, cars) {
+    if (err) {
+      console.log(err);
+      res
+        .status(500)
+        .send({ message: "Some error occurred while retrieving cars." });
+    } else {
+      res.json({ message: `${cars}` });
+    }
+  });
+};
+
 // Update an existing car document chosen by owner name
 exports.updateByOwner = function (req, res) {
   let query = { owner: req.body.ownerName }; // Name of owner who's car we want to update

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 let CarsSchema = mongoose.Schema({
   year: {
-    type: String,
+    type: Number,
     required: true,
   },
   make: {

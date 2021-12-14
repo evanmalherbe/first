@@ -12,11 +12,32 @@ import "../App.css";
 // Create function to display HTTP Post form in header
 function ListCarsForm(props) {
   return (
+    //model, make, registration number and current owner for all cars
+    // older than 5 years.
     <div className="listCarsFormDiv">
       <h2>List</h2>
-      <Button variant="primary" type="button" onClick={props.handleListCars}>
-        List All Cars
-      </Button>
+      <p>
+        Click button to list model, make, registration and current owner for all
+        cars older than 5 years{" "}
+      </p>
+      <div className="form-group">
+        <Button
+          variant="primary"
+          type="button"
+          onClick={props.handleListOlderCars}
+        >
+          List Older Cars
+        </Button>
+      </div>
+      <div className="form-group">
+        <Button
+          variant="primary"
+          type="button"
+          onClick={props.handleListAllCars}
+        >
+          List All Cars
+        </Button>
+      </div>
 
       {/* End of listFormDiv*/}
     </div>
