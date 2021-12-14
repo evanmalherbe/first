@@ -1,7 +1,7 @@
 import React from "react";
 
 // Import React Bootstrap components
-import { Form } from "react-bootstrap";
+import { Form, FormControl } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 
 // Import bootstrap styles
@@ -17,9 +17,13 @@ function DeleteCarForm(props) {
       <h2>Delete</h2>
       <Form>
         <div className="form-group">
-          <Form.Select name="deleteCars" onChange={props.handleChangeCar}>
-            <option value="all">Choose Car</option>
-          </Form.Select>
+          <Form.Label>Enter car owner name:</Form.Label>
+          <FormControl
+            type="text"
+            id="ownerToDelete"
+            placeholder="e.g. Bob Hope"
+            onChange={props.handleOwnerToDelete}
+          />
         </div>
         <div className="form-group">
           <Button

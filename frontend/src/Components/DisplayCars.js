@@ -3,12 +3,12 @@ import "../App.css";
 
 // Function to display search results on page
 function DisplayCars(props) {
-  let data = props.carsData;
+  let data = props.carList;
+  //console.log("Data says: " + data.model);
 
-  let array = data;
-  //console.log("array is " + data);
+  // let data = array.splice();
 
-  //console.log("Fixed array is: " + fixed);
+  // let results;
 
   // for (let i = 0; i <= array.length; i++) {
   //   // Add values from api to divs/list items in an array. One div for each result returned.
@@ -49,7 +49,7 @@ function DisplayCars(props) {
   return (
     <div className="displayCarsDiv">
       <h2>Results</h2>
-      {array}
+      {data}
     </div>
   );
 }

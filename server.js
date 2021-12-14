@@ -9,14 +9,11 @@ const car = require("./controllers/cars.controller.js");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.post("/add", car.create);
-app.get("/carList", car.findAll);
-
 //Import routes
-//require("./routes/display.js")(app);
-//require("./routes/add.js")(app);
-// require("./routes/update.js")(app);
-// require("./routes/delete.js")(app);
+require("./routes/display.js")(app);
+require("./routes/add.js")(app);
+require("./routes/update.js")(app);
+require("./routes/delete.js")(app);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

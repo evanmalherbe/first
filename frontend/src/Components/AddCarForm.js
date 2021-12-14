@@ -13,7 +13,7 @@ import "../App.css";
 // Create function to display HTTP Post form in header
 function AddCarForm(props) {
   return (
-    <div className="saveCarFormDiv">
+    <div className="addCarFormDiv">
       <h2>Add</h2>
       <Form>
         <div className="form-group">
@@ -22,29 +22,54 @@ function AddCarForm(props) {
             type="text"
             id="year"
             placeholder="e.g. 2005"
-            onChange={props.handleYearChange}
+            onChange={props.handleChangeYear}
           />
         </div>
-        {/* <div className="form-group">
+        <div className="form-group">
           <Form.Label>Enter car make:</Form.Label>
-          <FormControl type="text" id="make" placeholder="e.g. Toyota" />
+          <FormControl
+            type="text"
+            id="make"
+            placeholder="e.g. Toyota"
+            onChange={props.handleChangeMake}
+          />
         </div>
         <div className="form-group">
           <Form.Label>Enter car model:</Form.Label>
-          <FormControl type="text" id="model" placeholder="e.g. Corolla" />
+          <FormControl
+            type="text"
+            id="model"
+            placeholder="e.g. Corolla"
+            onChange={props.handleChangeModel}
+          />
         </div>
         <div className="form-group">
           <Form.Label>Enter colour:</Form.Label>
-          <FormControl type="text" id="colour" placeholder="e.g. red" />
+          <FormControl
+            type="text"
+            id="colour"
+            placeholder="e.g. red"
+            onChange={props.handleChangeColour}
+          />
         </div>
         <div className="form-group">
           <Form.Label>Enter registration number:</Form.Label>
-          <FormControl type="text" id="reg" placeholder="e.g. NU 20204" />
+          <FormControl
+            type="text"
+            id="regNum"
+            placeholder="e.g. NU 20204"
+            onChange={props.handleChangeRegNum}
+          />
         </div>
         <div className="form-group">
           <Form.Label>Enter full name of current owner:</Form.Label>
-          <FormControl type="text" id="owner" placeholder="e.g. bob Hope" />
-        </div> */}
+          <FormControl
+            type="text"
+            id="owner"
+            placeholder="e.g. bob Hope"
+            onChange={props.handleChangeOwnerName}
+          />
+        </div>
 
         <Button className="btn btn-primary" onClick={props.handleAddCar}>
           Add Car

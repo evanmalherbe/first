@@ -30,7 +30,7 @@ exports.create = function (req, res) {
 
 // Find all cars in collection and display
 exports.findAll = function (req, res) {
-  Car.find(function (err, cars) {
+  Car.find({}, "-_id -__v", function (err, cars) {
     if (err) {
       console.log(err);
       res
@@ -44,12 +44,18 @@ exports.findAll = function (req, res) {
 
 // Update an existing car document chosen by owner name
 exports.updateByOwner = function (req, res) {
-  let query = { owner: "Bob Hope" }; // Name of owner who's car we want to update
+  let query = { owner: req.body.ownerName }; // Name of owner who's car we want to update
 
   // Update car with new info
   Car.findOneAndUpdate(
     query,
-    { owner: "Evan Malherbe" }, // Updated owner name or add other fields to be updated
+    {
+      year: req.body.year,
+      make: req.body.make,
+      model: req.body.model,
+      colour: req.body.colour,
+      registration: req.body.regNum,
+    }, // Updated owner name or add other fields to be updated
     { new: true },
     function (err, doc) {
       if (err) {
@@ -64,11 +70,11 @@ exports.updateByOwner = function (req, res) {
 // Delete car identified by owner name
 exports.deleteCarsByOwner = function (req, res) {
   // Substitute owner name below with variable later
-  Car.findOneAndRemove({ owner: "Bob Hope" }, function (err) {
+  Car.findOneAndRemove({ owner: req.body.ownerToDelete }, function (err) {
     if (err) {
-      console.log("ERROR: Cars NOT removed. " + err);
-      res.send({ message: "ERROR: Cars NOT removed. " + err });
+      console.log("ERROR: Car NOT removed. " + err);
+      res.send({ message: "ERROR: Car NOT removed. " + err });
     }
-    res.send({ message: "Cars removed." });
+    res.send({ message: "Car removed." });
   });
 };

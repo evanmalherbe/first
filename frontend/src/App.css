@@ -34,16 +34,6 @@ body {
   color: red;
 }
 
-.displayCarsDiv {
-  display: flex;
-  flex-direction: column;
-  
-  padding: 1rem;
-
-  border: 1px solid #dedede;
-  width: 40rem;
-}
-
 .formsRow {
   display: flex;
   flex-direction: row;
@@ -58,7 +48,18 @@ body {
   margin-bottom: 0.5rem;
 }
 
-.listCarsFormDiv {
+.displayCarsDiv {
+  display: flex;
+  flex-direction: column;
+  
+  padding: 1rem;
+
+  flex: 2;
+  border: 1px solid #dedede;
+  
+}
+
+/* .listCarsFormDiv {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -67,15 +68,15 @@ body {
   width: 20rem;
 
   border: 1px solid  #dedede;
-}
+} */
 
-.saveCarFormDiv {
+.addCarFormDiv {
   display: flex;
   flex-direction: column;
 
   padding: 1rem;
-  width: 20rem;
 
+  flex: 1;
   border: 1px solid #dedede;
 }
 
@@ -84,7 +85,7 @@ body {
   flex-direction: column;
 
   padding: 1rem;
-  width: 20rem;
+  flex: 1;
 
   border: 1px solid #dedede;
 }
@@ -94,7 +95,7 @@ body {
   flex-direction: column;
 
   padding: 1rem;
-  width: 20rem;
-
+  
+  flex: 1;
   border: 1px solid #dedede;
 }
