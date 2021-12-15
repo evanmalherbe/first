@@ -61,51 +61,51 @@ To run this project, do the following:
 
 1. Once you open the project in your browser [http://localhost:3000](http://localhost:3000), you will see the forms to add, update or delete cars from the database and the "Results" list, where the contents of the database are displayed. See figure 1 below.
 
-![figure 1](src/screenshots/screenshot1.png)
+![figure 1](screenshots/screenshot1.png)
 Figure 1
 
 ### Add a Car
 
 2. To add a car to the database, fill in the "Add" form on the left side of the screen and click on the "Add Car" button at the bottom. You will see the "Results" list update with the new car information. See figure 2 and 3 below.
 
-![figure 2](src/screenshots/screenshot2.png)
+![figure 2](screenshots/screenshot2.png)
 Figure 2
 
-![figure 3](src/screenshots/screenshot3.png)
+![figure 3](screenshots/screenshot3.png)
 Figure 3
 
 ### Update a Car
 
 3. To update the information for an existing car in the database, use the "Update" form. First enter the name of the owner who's car you want to update (important!), then fill in the other boxes with updated information. Lastly, click on the "Update Car" button at the bottom. You will see that the car will be updated in the "Results" list. See figure 4 and 5 below.
 
-![figure 4](src/screenshots/screenshot4.png)
+![figure 4](screenshots/screenshot4.png)
 Figure 4
 
-![figure 5](src/screenshots/screenshot5.png)
+![figure 5](screenshots/screenshot5.png)
 Figure 5
 
 ### Update Many Cars
 
 4. To update the information for several cars at once, use the "Update Many" form. Fill in the name of the owner of the existing cars on the list that you want to update (important!), then fill in the colour that you would like them to be updated with. Lastly, click the "Update Cars" button at the bottom of the form. You will see the cars have been updated on the "Results" list. See figure 6 and 7 below.
 
-![figure 6](src/screenshots/screenshot6.png)
+![figure 6](screenshots/screenshot6.png)
 Figure 6
 
-![figure 7](src/screenshots/screenshot7.png)
+![figure 7](screenshots/screenshot7.png)
 Figure 7
 
 ### List All Cars or List Older Cars
 
 5. To list the Model, Make, Registration and current owner for all cars older than 5 years, click the "List Older Cars" button. To refresh the list to show ALL the cars in the database again, click the "List All Cars" button. See figure 8 below.
 
-![figure 8](src/screenshots/screenshot8.png)
+![figure 8](screenshots/screenshot8.png)
 Figure 8
 
 ### Delete a Car
 
 6. To delete a car from the database, use the "Delete" form. Enter the name of the owner of the car that you want to delete, then click the "Delete Car" button. See figure 9 below.
 
-![figure 9](src/screenshots/screenshot9.png)
+![figure 9](screenshots/screenshot9.png)
 Figure 9
 
 7. You will see that the car has been deleted/removed from the list/database.
