@@ -5,9 +5,6 @@ import "../App.css";
 function DisplayCars(props) {
   let data = props.carList;
 
-  let array = data;
-  console.log("Array length is: " + array.length);
-
   return (
     <div className="displayCarsDiv">
       <h2>Results</h2>
