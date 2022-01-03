@@ -45,16 +45,22 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-//Uri for connecting to database from MongoDB Atlas>Connect
-const uri =
-  "mongodb+srv://evanmalherbe:jinnscir@cluster0.xrjxb.mongodb.net/test?retryWrites=true&w=majority";
+// Auth details for connecting to db
+const username = "evanmalherbe";
+const password = "jinnscir";
+const cluster = "cluster0.xrjxb";
+const dbname = "test";
 
 mongoose.Promise = global.Promise;
+
+mongoose.connect(
+  `mongodb+srv://${username}:${password}@${cluster}.mongodb.net/${dbname}?retryWrites=true&w=majority`
+);
 
 /* Really struggled to connect to the database initially, until I read this website:
  https://mongoosejs.com/docs/connections.html
  and figured out that the "useMongoClient: true" option was causing it not to connect, as it is "not supported". Removed the option and now it works. */
-mongoose.connect(uri);
+// mongoose.connect(uri);
 
 // Message if could not connect to db
 mongoose.connection.on("error", function () {
