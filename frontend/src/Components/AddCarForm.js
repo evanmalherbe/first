@@ -10,7 +10,7 @@ import Button from "react-bootstrap/Button";
 // Import custom stylesheet
 import "../App.css";
 
-// Create function to display HTTP Post form in header
+// Function to display HTTP Post form for adding car to database
 function AddCarForm(props) {
   return (
     <div className="addCarFormDiv">

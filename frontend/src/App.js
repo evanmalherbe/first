@@ -40,6 +40,7 @@ class App extends React.Component {
       colour: "",
       regNum: "",
       ownerName: "",
+      ownerToDelete: "",
     };
 
     // Binding for functions to make "this" work

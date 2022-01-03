@@ -38,7 +38,13 @@ exports.findAll = function (req, res) {
         .status(500)
         .send({ message: "Some error occurred while retrieving cars." });
     } else {
-      res.json({ message: `${cars}` });
+      let carArray = [];
+
+      cars.forEach(function (result) {
+        carArray.push(result);
+      });
+
+      res.json({ message: `${carArray}` });
     }
   });
 };
